@@ -1,6 +1,7 @@
 package com.omnitech.offers.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,8 +9,11 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
+import com.omnitech.offers.DetailsActivity
 import com.omnitech.offers.R
 import com.omnitech.offers.models.Offer
 import com.squareup.picasso.Picasso
@@ -31,8 +35,13 @@ class OffersAdapter(var context: Context, var arrayList: ArrayList<Offer>) :
     }
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
-
         val offer: Offer = arrayList.get(position)
+
+        holder.card.setOnClickListener {
+            val intent = Intent(context, DetailsActivity::class.java)
+            intent.putExtra("offer_id", offer.id)
+            startActivity(context, intent, null)
+        }
 
         Picasso.get()
             .load(offer.url)
@@ -64,6 +73,8 @@ class OffersAdapter(var context: Context, var arrayList: ArrayList<Offer>) :
         var currentValue = itemView.findViewById<TextView>(R.id.current_value)
         var name = itemView.findViewById<TextView>(R.id.name)
         var isFavourite = itemView.findViewById<ImageButton>(R.id.is_favourite)
+
+        var card = itemView.findViewById<CardView>(R.id.icons_frame)
 
     }
 }

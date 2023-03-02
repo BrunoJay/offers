@@ -30,5 +30,14 @@ class Connector {
                 null
             }
         }
+
+        fun getOfferById(context: Context, offerId: String?): Offer? {
+            var result: Offer? = null
+            val offers: List<Offer> = getOffersDataList(context)!!
+            for (offer in offers) {
+                if (offer.id == offerId) result = offer
+            }
+            return result
+        }
     }
 }
