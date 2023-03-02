@@ -6,12 +6,11 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.omnitech.offers.models.Offer
 import com.squareup.picasso.Picasso
 
 class DetailsActivity : AppCompatActivity() {
-    var favView: ImageButton? = null
-    var nonFavView: ImageButton? = null
     var offer: Offer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,29 +32,27 @@ class DetailsActivity : AppCompatActivity() {
             .error(R.drawable.image_error)
             .into(findViewById<ImageView>(R.id.offer_image))
 
-        favView = findViewById<ImageButton>(R.id.favourite)
-        nonFavView = findViewById<ImageButton>(R.id.not_favourite)
         val favState = Connector.getOfferFavouriteState(this, offer?.id)
         setFavourites(favState!!)
 
-        favView!!.setOnClickListener {
-            val newState = Connector.setFavouriteState(this, offer?.id, "favourite")
+        findViewById<ImageButton>(R.id.favourite)?.setOnClickListener {
+            val newState = Connector.setFavouriteState(this, offer?.id, "not_favourite")
             setFavourites(newState!!)
         }
 
-        nonFavView!!.setOnClickListener {
-            val newState = Connector.setFavouriteState(this, offer?.id, "not_favourite")
+        findViewById<ImageButton>(R.id.not_favourite).setOnClickListener {
+            val newState = Connector.setFavouriteState(this, offer?.id, "favourite")
             setFavourites(newState!!)
         }
     }
 
     private fun setFavourites(favState: String) {
         if (favState == "favourite") {
-            favView!!.visibility = View.VISIBLE
-            nonFavView!!.visibility = View.GONE
+            findViewById<ImageButton>(R.id.favourite).isVisible = true
+            findViewById<ImageButton>(R.id.not_favourite).isVisible = false
         } else {
-            favView!!.visibility = View.GONE
-            nonFavView!!.visibility = View.VISIBLE
+            findViewById<ImageButton>(R.id.favourite).isVisible = false
+            findViewById<ImageButton>(R.id.not_favourite).isVisible = true
         }
     }
 }

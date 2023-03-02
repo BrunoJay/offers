@@ -70,6 +70,7 @@
                 android:layout_height="48dp"
                 android:src="@drawable/ic_baseline_favorite_24"
                 android:layout_margin="10pt"
+                android:visibility="invisible"
                 android:contentDescription="Favourite"/>
 
         <ImageButton
@@ -78,6 +79,7 @@
                 android:layout_height="48dp"
                 android:src="@drawable/ic_baseline_favorite_border_24"
                 android:layout_margin="10pt"
+                android:visibility="invisible"
                 android:contentDescription="Not Favourite"/>
     </RelativeLayout>
 </RelativeLayout>
