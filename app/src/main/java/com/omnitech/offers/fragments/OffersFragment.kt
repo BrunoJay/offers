@@ -1,6 +1,7 @@
 package com.omnitech.offers.fragments
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.omnitech.offers.Connector
 import com.omnitech.offers.R
 import com.omnitech.offers.adapters.OffersAdapter
 import com.omnitech.offers.models.Offer
@@ -24,12 +26,18 @@ class OffersFragment : Fragment() {
     private var gridLayoutManager: GridLayoutManager? = null
     private var offersAdapter: OffersAdapter? = null
 
+    private var sp: SharedPreferences? = null
+    private var spEditor: SharedPreferences.Editor? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
         val rootView: View = inflater.inflate(R.layout.offers_fragment, container, false)
+
+        sp = rootView.context.getSharedPreferences("key", 0)
+        spEditor = sp?.edit()
 
         recyclerView = rootView.findViewById(R.id.offers_recycler_view)
         gridLayoutManager =
@@ -38,31 +46,19 @@ class OffersFragment : Fragment() {
         recyclerView?.setHasFixedSize(true)
 
         offersData = ArrayList()
-        offersData = getOffersDataList(rootView.context)
+        offersData = Connector.getOffersDataList(rootView.context)
         offersAdapter = OffersAdapter(rootView.context, offersData!!)
         recyclerView?.adapter = offersAdapter
 
-        return rootView
-    }
-
-    private fun getOffersDataList(context: Context): ArrayList<Offer>? {
-        // Create a Gson instance
-        val gson = Gson()
-
-        // Define a type for your list of Offer objects
-        val type = object : TypeToken<List<Offer>>() {}.type
-
-        return try {
-            val inputStream: InputStream = context.assets.open("offers.json")
-            val size: Int = inputStream.available()
-            val buffer = ByteArray(size)
-            inputStream.read(buffer)
-            val jsonString = String(buffer)
-            // Parse your JSON string using fromJson() method
-            gson.fromJson(jsonString, type)
-        } catch (e: IOException) {
-            e.printStackTrace()
-            null
+        //save favourite state to shared preferences
+        for (offer in offersData!!) {
+            val value = sp?.getString(offer.id, null)
+            if(value.isNullOrEmpty()) {
+                spEditor?.putString(offer.id, "not-favourite")
+                spEditor?.apply()
+            }
         }
+
+        return rootView
     }
 }

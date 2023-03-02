@@ -12,8 +12,8 @@ import com.omnitech.offers.R
 import com.omnitech.offers.models.Offer
 import com.squareup.picasso.Picasso
 
-class OffersAdapter(var context: Context, var arrayList: ArrayList<Offer>) :
-    RecyclerView.Adapter<OffersAdapter.ItemHolder>() {
+class FavouritesAdapter(var context: Context, var arrayList: ArrayList<Offer>) :
+    RecyclerView.Adapter<FavouritesAdapter.ItemHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
