@@ -57,12 +57,13 @@ class Connector {
             return results
         }
 
-        fun setFavouriteState(context: Context, offerId: String?, state:String) {
+        fun setFavouriteState(context: Context, offerId: String?, state:String):String? {
             sp = context.getSharedPreferences("key", 0)
             spEditor = sp?.edit()
 
             spEditor?.putString(offerId, state)
             spEditor?.apply()
+            return getOfferFavouriteState(context, offerId)
         }
 
         fun getOfferFavouriteState(context: Context, offerId: String?): String? {

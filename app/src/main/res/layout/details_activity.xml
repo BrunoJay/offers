@@ -58,20 +58,26 @@
         </LinearLayout>
     </LinearLayout>
 
+    <RelativeLayout
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:gravity = "center_horizontal"
+            android:layout_alignParentBottom="true">
 
-    <ImageButton
-            android:id="@+id/favourite"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/ic_baseline_favorite_24"
-            android:layout_margin="10pt"
-            android:contentDescription="Favourite"/>
+        <ImageButton
+                android:id="@+id/favourite"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_baseline_favorite_24"
+                android:layout_margin="10pt"
+                android:contentDescription="Favourite"/>
 
-    <ImageButton
-            android:id="@+id/not_favourite"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/ic_baseline_favorite_border_24"
-            android:layout_margin="10pt"
-            android:contentDescription="Not Favourite"/>
+        <ImageButton
+                android:id="@+id/not_favourite"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_baseline_favorite_border_24"
+                android:layout_margin="10pt"
+                android:contentDescription="Not Favourite"/>
+    </RelativeLayout>
 </RelativeLayout>

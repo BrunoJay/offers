@@ -1,13 +1,16 @@
 package com.omnitech.offers.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.omnitech.offers.DetailsActivity
 import com.omnitech.offers.R
 import com.omnitech.offers.models.Offer
 import com.squareup.picasso.Picasso
@@ -36,6 +39,12 @@ class FavouritesAdapter(var context: Context, var arrayList: ArrayList<Offer>) :
 
         val offer: Offer = arrayList.get(position)
 
+        holder.card.setOnClickListener {
+            val intent = Intent(context, DetailsActivity::class.java)
+            intent.putExtra("offer_id", offer.id)
+            ContextCompat.startActivity(context, intent, null)
+        }
+
         Picasso.get()
             .load(offer.url)
             .placeholder(R.drawable.image)
@@ -43,7 +52,7 @@ class FavouritesAdapter(var context: Context, var arrayList: ArrayList<Offer>) :
             .into(holder.icons)
 
         holder.name.text = offer.name
-
+        holder.currentValue.text = offer.current_value
         holder.currentValue.setOnClickListener {
             Toast.makeText(context, offer.description, Toast.LENGTH_LONG).show()
         }
@@ -55,6 +64,7 @@ class FavouritesAdapter(var context: Context, var arrayList: ArrayList<Offer>) :
         var currentValue = itemView.findViewById<TextView>(R.id.current_value)
         var name = itemView.findViewById<TextView>(R.id.name)
         var errorMessage = itemView.findViewById<TextView>(R.id.message)
+        var card = itemView.findViewById<TextView>(R.id.icons_frame)
 
     }
 }
