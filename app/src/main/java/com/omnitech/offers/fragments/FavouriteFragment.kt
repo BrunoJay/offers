@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.omnitech.offers.Connector
 import com.omnitech.offers.R
+import com.omnitech.offers.adapters.ErrorAdapter
 import com.omnitech.offers.adapters.FavouritesAdapter
 import com.omnitech.offers.models.Offer
 
@@ -42,17 +43,7 @@ class FavouriteFragment : Fragment() {
         offersData = ArrayList()
         offersData = getFavourites(rootView.context)
         favouritesAdapter = FavouritesAdapter(rootView.context, offersData!!)
-        recyclerView?.adapter = favouritesAdapter
-
-        val textView = rootView.findViewById<TextView>(R.id.show_no_favourites)
-        textView.text = "No Favourites"
-        if (offersData!!.isNotEmpty()) {
-            textView.visibility = View.VISIBLE
-            recyclerView!!.visibility = View.INVISIBLE
-        } else {
-            textView.visibility = View.INVISIBLE
-            recyclerView!!.visibility = View.VISIBLE
-        }
+        recyclerView?.adapter = if(offersData!!.size>0) favouritesAdapter else ErrorAdapter(rootView.context, "No Favourites")
 
         return rootView
     }

@@ -14,12 +14,4 @@
             android:padding="4pt">
 
     </androidx.recyclerview.widget.RecyclerView>
-
-    <TextView
-            android:id="@+id/show_no_favourites"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_gravity="center"/>
-
 </LinearLayout>
