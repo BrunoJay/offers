@@ -4,10 +4,16 @@ import android.graphics.Point
 import android.os.Bundle
 import android.widget.FrameLayout
 import android.widget.LinearLayout
+import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.ui.Modifier
 import androidx.fragment.app.Fragment
 import com.omnitech.offers.fragments.DetailsFragment
 import com.omnitech.offers.fragments.ViewPagerFragment
+import com.omnitech.offers.ui.theme.NavigationTheme
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,7 +29,18 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_main)
+        setContent {
+            NavigationTheme {
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colors.background
+                ) {
+                    Nagivation()
+                }
+            }
+        }
+
+/*        setContentView(R.layout.activity_main)
 
         val display = windowManager.defaultDisplay
         val size = Point()
@@ -36,6 +53,6 @@ class MainActivity : AppCompatActivity() {
 
         fm.beginTransaction().add(R.id.main_container, fragment2, "2").hide(fragment2).commit()
         fm.beginTransaction().add(R.id.main_container, fragment1, "1").commit()
-        fm.beginTransaction().hide(active).show(fragment1).commit()
+        fm.beginTransaction().hide(active).show(fragment1).commit()*/
     }
 }
