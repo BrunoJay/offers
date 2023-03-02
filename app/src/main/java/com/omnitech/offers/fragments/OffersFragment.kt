@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.omnitech.offers.Connector
+import com.omnitech.offers.utils.DataHandler
 import com.omnitech.offers.R
 import com.omnitech.offers.adapters.OffersAdapter
 import com.omnitech.offers.models.Offer
@@ -41,7 +41,7 @@ class OffersFragment : Fragment() {
         recyclerView?.setHasFixedSize(true)
 
         offersData = ArrayList()
-        offersData = Connector.getOffersDataList(rootView.context)
+        offersData = DataHandler.getOffersDataList(rootView.context)
         offersAdapter = OffersAdapter(rootView.context, offersData!!)
         recyclerView?.adapter = offersAdapter
 

@@ -11,7 +11,7 @@ import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.omnitech.offers.DetailsActivity
+import com.omnitech.offers.activities.DetailsActivity
 import com.omnitech.offers.R
 import com.omnitech.offers.models.Offer
 import com.squareup.picasso.Picasso

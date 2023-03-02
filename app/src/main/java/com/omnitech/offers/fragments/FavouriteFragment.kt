@@ -1,7 +1,5 @@
 package com.omnitech.offers.fragments
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.omnitech.offers.Connector
+import com.omnitech.offers.utils.DataHandler
 import com.omnitech.offers.R
 import com.omnitech.offers.adapters.FavouritesAdapter
 import com.omnitech.offers.models.Offer
@@ -33,7 +31,7 @@ class FavouriteFragment : Fragment() {
         recyclerView?.setHasFixedSize(true)
 
         offersData = ArrayList()
-        offersData = Connector.getFavourites(rootView.context)
+        offersData = DataHandler.getFavourites(rootView.context)
         favouritesAdapter = FavouritesAdapter(rootView.context, offersData!!)
         recyclerView?.adapter =  favouritesAdapter
 

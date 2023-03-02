@@ -1,4 +1,4 @@
-package com.omnitech.offers
+package com.omnitech.offers.utils
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -8,7 +8,7 @@ import com.omnitech.offers.models.Offer
 import java.io.IOException
 import java.io.InputStream
 
-class Connector {
+class DataHandler {
     companion object {
         var sp: SharedPreferences? = null
         var spEditor: SharedPreferences.Editor? = null

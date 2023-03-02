@@ -1,4 +1,4 @@
-package com.omnitech.offers
+package com.omnitech.offers.activities
 
 import android.graphics.Point
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.omnitech.offers.R
 import com.omnitech.offers.fragments.DetailsFragment
 import com.omnitech.offers.fragments.ViewPagerFragment
 
