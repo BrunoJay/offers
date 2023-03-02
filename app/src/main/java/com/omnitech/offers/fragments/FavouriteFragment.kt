@@ -22,16 +22,10 @@ class FavouriteFragment : Fragment() {
     private var gridLayoutManager: GridLayoutManager? = null
     private var favouritesAdapter: FavouritesAdapter? = null
 
-    private var sp: SharedPreferences? = null
-    private var spEditor: SharedPreferences.Editor? = null
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         val rootView = inflater.inflate(R.layout.favourites_fragment, container, false)
-
-        sp = rootView.context.getSharedPreferences("key", 0)
-        spEditor = sp?.edit()
 
         recyclerView = rootView.findViewById(R.id.favourites_recycler_view)
         gridLayoutManager = GridLayoutManager(rootView.context, 2, LinearLayoutManager.VERTICAL, false)
@@ -39,21 +33,10 @@ class FavouriteFragment : Fragment() {
         recyclerView?.setHasFixedSize(true)
 
         offersData = ArrayList()
-        offersData = getFavourites(rootView.context)
+        offersData = Connector.getFavourites(rootView.context)
         favouritesAdapter = FavouritesAdapter(rootView.context, offersData!!)
         recyclerView?.adapter =  favouritesAdapter
 
         return rootView
-    }
-
-    private fun getFavourites(context: Context): ArrayList<Offer> {
-        val offers = Connector.getOffersDataList(context)
-        val results = ArrayList<Offer>()
-        offers?.forEach {
-            if (sp?.getString(it.id, null) == "favourite") {
-                results.add(it)
-            }
-        }
-        return results
     }
 }

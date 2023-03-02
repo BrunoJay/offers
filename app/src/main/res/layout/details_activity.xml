@@ -1,54 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="fill_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
-
-    <ImageView
-            android:id="@+id/offer_image"
-            android:layout_width="fill_parent"
-            android:layout_height="270dp"
-            android:contentDescription="offer_image"/>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent">
 
     <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
-        <TextView
-                android:id="@+id/current_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:layout_gravity="center_horizontal"
-                android:textColor="@color/black"/>
+            android:orientation="vertical"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
 
-        <TextView
-                android:id="@+id/name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:layout_gravity="center_horizontal"
-                android:textColor="@color/black"/>
+        <ImageView
+                android:id="@+id/offer_image"
+                android:layout_width="fill_parent"
+                android:layout_height="270dp"
+                android:contentDescription="offer_image"/>
 
-        <TextView
-                android:layout_width="wrap_content"
+        <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/description"
-                android:textSize="14sp"
-                android:textAlignment="center"
                 android:layout_margin="10dp"
-                android:textColor="@color/black"/>
+                android:layout_weight="1"
+                android:orientation="vertical">
+            <TextView
+                    android:id="@+id/current_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/black"/>
 
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/terms"
-                android:textSize="14sp"
-                android:textAlignment="center"
-                android:layout_margin="10dp"
-                android:textColor="@color/black"/>
+            <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/black"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/description"
+                    android:textSize="14sp"
+                    android:textAlignment="center"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/black"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/terms"
+                    android:textSize="14sp"
+                    android:textAlignment="center"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/black"/>
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+
+
+    <ImageButton
+            android:id="@+id/favourite"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_baseline_favorite_24"
+            android:layout_margin="10pt"
+            android:contentDescription="Favourite"/>
+
+    <ImageButton
+            android:id="@+id/not_favourite"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_baseline_favorite_border_24"
+            android:layout_margin="10pt"
+            android:contentDescription="Not Favourite"/>
+</RelativeLayout>
