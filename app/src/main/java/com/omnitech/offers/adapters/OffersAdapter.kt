@@ -8,6 +8,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.omnitech.offers.R
 import com.omnitech.offers.models.Offer
@@ -15,7 +16,6 @@ import com.squareup.picasso.Picasso
 
 class OffersAdapter(var context: Context, var arrayList: ArrayList<Offer>) :
     RecyclerView.Adapter<OffersAdapter.ItemHolder>() {
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
         val viewHolder = LayoutInflater.from(parent.context)
@@ -28,6 +28,10 @@ class OffersAdapter(var context: Context, var arrayList: ArrayList<Offer>) :
     }
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
+
+        holder.iconsFrame.setOnClickListener {
+            Toast.makeText(context, "clicked here", Toast.LENGTH_SHORT).show()
+        }
 
         val offer: Offer = arrayList.get(position)
 
@@ -58,6 +62,7 @@ class OffersAdapter(var context: Context, var arrayList: ArrayList<Offer>) :
 
     class ItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+        var iconsFrame = itemView.findViewById<CardView>(R.id.icons_frame)
         var icons = itemView.findViewById<ImageView>(R.id.icons_image)
         var currentValue = itemView.findViewById<TextView>(R.id.current_value)
         var name = itemView.findViewById<TextView>(R.id.name)

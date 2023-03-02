@@ -1,6 +1,5 @@
 package com.omnitech.offers.fragments
 
-import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,14 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.omnitech.offers.Connector
 import com.omnitech.offers.R
 import com.omnitech.offers.adapters.OffersAdapter
 import com.omnitech.offers.models.Offer
-import java.io.IOException
-import java.io.InputStream
 
 class OffersFragment : Fragment() {
 
