@@ -12,7 +12,7 @@
             android:id="@+id/offers_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="12dp">
+            android:padding="4pt">
 
     </androidx.recyclerview.widget.RecyclerView>
 

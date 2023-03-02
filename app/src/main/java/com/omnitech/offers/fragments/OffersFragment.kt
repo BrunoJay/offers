@@ -33,7 +33,7 @@ class OffersFragment : Fragment() {
 
         recyclerView = rootView.findViewById(R.id.offers_recycler_view)
         gridLayoutManager =
-            GridLayoutManager(rootView.context, 3, LinearLayoutManager.VERTICAL, false)
+            GridLayoutManager(rootView.context, 2, LinearLayoutManager.VERTICAL, false)
         recyclerView?.layoutManager = gridLayoutManager
         recyclerView?.setHasFixedSize(true)
 

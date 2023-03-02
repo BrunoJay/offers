@@ -30,24 +30,25 @@ class OffersAdapter(var context: Context, var arrayList: ArrayList<Offer>) :
 
         val offer: Offer = arrayList.get(position)
 
-        // Get an instance of Picasso
-        val picasso: Picasso = Picasso.get()
+        Picasso.get()
+            .load(offer.url)
+            .placeholder(R.drawable.image)
+            .error(R.drawable.image_error)
+            .into(holder.icons)
 
-        // Load an image from a URL into an ImageView
-        val imageView:ImageView = holder.icons
-        picasso.load(offer.url).into(imageView)
-        holder.titles.text = offer.name
+        holder.name.text = offer.name
+        holder.currentValue.text = offer.current_value
 
-        holder.titles.setOnClickListener {
+        holder.currentValue.setOnClickListener {
             Toast.makeText(context, offer.description, Toast.LENGTH_LONG).show()
         }
-
     }
 
     class ItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         var icons = itemView.findViewById<ImageView>(R.id.icons_image)
-        var titles = itemView.findViewById<TextView>(R.id.text_label)
+        var currentValue = itemView.findViewById<TextView>(R.id.current_value)
+        var name = itemView.findViewById<TextView>(R.id.name)
 
     }
 }
