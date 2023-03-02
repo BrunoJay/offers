@@ -48,8 +48,10 @@ class FavouriteFragment : Fragment() {
         textView.text = "No Favourites"
         if (offersData!!.isNotEmpty()) {
             textView.visibility = View.VISIBLE
+            recyclerView!!.visibility = View.INVISIBLE
         } else {
             textView.visibility = View.INVISIBLE
+            recyclerView!!.visibility = View.VISIBLE
         }
 
         return rootView
