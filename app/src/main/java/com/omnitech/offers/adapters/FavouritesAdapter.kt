@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.omnitech.offers.DetailsActivity
@@ -64,7 +65,7 @@ class FavouritesAdapter(var context: Context, var arrayList: ArrayList<Offer>) :
         var currentValue = itemView.findViewById<TextView>(R.id.current_value)
         var name = itemView.findViewById<TextView>(R.id.name)
         var errorMessage = itemView.findViewById<TextView>(R.id.message)
-        var card = itemView.findViewById<TextView>(R.id.icons_frame)
+        var card = itemView.findViewById<CardView>(R.id.icons_frame)
 
     }
 }
