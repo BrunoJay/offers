@@ -4,9 +4,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24pt"
-                android:layout_marginTop="8pt"
-                android:layout_marginStart="8pt"
-                android:layout_marginEnd="8pt">
+                android:layout_marginEnd="4pt"
+                android:layout_marginStart="4pt">
 
     <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
