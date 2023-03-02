@@ -1,26 +1,41 @@
 package com.omnitech.offers
 
+import android.graphics.Point
 import android.os.Bundle
-import com.google.android.material.tabs.TabLayout
-import androidx.viewpager.widget.ViewPager
+import android.widget.FrameLayout
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
-import com.omnitech.offers.adapters.ViewPagerAdapter
-import com.omnitech.offers.databinding.ActivityMainBinding
+import androidx.fragment.app.Fragment
+import com.omnitech.offers.fragments.DetailsFragment
+import com.omnitech.offers.fragments.ViewPagerFragment
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    private val fragment1: Fragment = ViewPagerFragment()
+    private val fragment2: Fragment = DetailsFragment()
+    private val fm = supportFragmentManager
+    private val active = fragment1
+
+    private var lp: LinearLayout.LayoutParams? = null
+    private var frameLayout: FrameLayout? = null
+    private var screenHeight = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_main)
 
-        val viewPagerAdapter = ViewPagerAdapter(this, supportFragmentManager)
-        val viewPager: ViewPager = binding.viewPager
-        viewPager.adapter = viewPagerAdapter
-        val tabs: TabLayout = binding.tabs
-        tabs.setupWithViewPager(viewPager)
+        val display = windowManager.defaultDisplay
+        val size = Point()
+        display.getSize(size)
+        screenHeight = size.y
+
+        frameLayout = findViewById(R.id.main_container)
+        lp = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, screenHeight)
+        frameLayout!!.layoutParams = lp
+
+        fm.beginTransaction().add(R.id.main_container, fragment2, "2").hide(fragment2).commit()
+        fm.beginTransaction().add(R.id.main_container, fragment1, "1").commit()
+        fm.beginTransaction().hide(active).show(fragment1).commit()
     }
 }
