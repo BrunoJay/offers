@@ -19,7 +19,9 @@ class FavouritesAdapter(var context: Context, var arrayList: ArrayList<Offer>) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
         val viewHolder = LayoutInflater.from(parent.context)
             .inflate(R.layout.grid_layout_list_item, parent, false)
-        return ItemHolder(viewHolder)
+        val errorHolder = LayoutInflater.from(parent.context)
+            .inflate(R.layout.error_view, parent, false)
+        return if(arrayList.size>0) ItemHolder(viewHolder) else ItemHolder(errorHolder)
     }
 
     override fun getItemCount(): Int {
@@ -27,6 +29,10 @@ class FavouritesAdapter(var context: Context, var arrayList: ArrayList<Offer>) :
     }
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
+
+        if (arrayList.size==0) {
+            holder.errorMessage.text = "No Favourites"
+        }
 
         val offer: Offer = arrayList.get(position)
 
@@ -37,24 +43,10 @@ class FavouritesAdapter(var context: Context, var arrayList: ArrayList<Offer>) :
             .into(holder.icons)
 
         holder.name.text = offer.name
-        holder.currentValue.text = offer.current_value
-        if (checkIfOfferIsAmongFavourites(context, offer.id)) {
-            holder.isFavourite.visibility = View.VISIBLE
-            holder.notFavourite.visibility = View.INVISIBLE
-        } else {
-            holder.isFavourite.visibility = View.INVISIBLE
-            holder.notFavourite.visibility = View.VISIBLE
-        }
 
         holder.currentValue.setOnClickListener {
             Toast.makeText(context, offer.description, Toast.LENGTH_LONG).show()
         }
-    }
-
-    fun checkIfOfferIsAmongFavourites(context: Context, offerId: String): Boolean {
-        val sp = context.getSharedPreferences("key", 0)
-        val value = sp?.getString(offerId, null)
-        return value == "favourite"
     }
 
     class ItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -62,8 +54,7 @@ class FavouritesAdapter(var context: Context, var arrayList: ArrayList<Offer>) :
         var icons = itemView.findViewById<ImageView>(R.id.icons_image)
         var currentValue = itemView.findViewById<TextView>(R.id.current_value)
         var name = itemView.findViewById<TextView>(R.id.name)
-        var isFavourite = itemView.findViewById<TextView>(R.id.is_favourite)
-        var notFavourite = itemView.findViewById<TextView>(R.id.not_favourite)
+        var errorMessage = itemView.findViewById<TextView>(R.id.message)
 
     }
 }

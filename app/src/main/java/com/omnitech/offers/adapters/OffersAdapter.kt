@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -40,10 +41,8 @@ class OffersAdapter(var context: Context, var arrayList: ArrayList<Offer>) :
         holder.currentValue.text = offer.current_value
         if (checkIfOfferIsAmongFavourites(context, offer.id)) {
             holder.isFavourite.visibility = View.VISIBLE
-            holder.notFavourite.visibility = View.INVISIBLE
         } else {
             holder.isFavourite.visibility = View.INVISIBLE
-            holder.notFavourite.visibility = View.VISIBLE
         }
 
         holder.currentValue.setOnClickListener {
@@ -62,8 +61,7 @@ class OffersAdapter(var context: Context, var arrayList: ArrayList<Offer>) :
         var icons = itemView.findViewById<ImageView>(R.id.icons_image)
         var currentValue = itemView.findViewById<TextView>(R.id.current_value)
         var name = itemView.findViewById<TextView>(R.id.name)
-        var isFavourite = itemView.findViewById<TextView>(R.id.is_favourite)
-        var notFavourite = itemView.findViewById<TextView>(R.id.not_favourite)
+        var isFavourite = itemView.findViewById<ImageButton>(R.id.is_favourite)
 
     }
 }

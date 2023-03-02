@@ -23,18 +23,17 @@
                 android:layout_height="90dp"
                 android:layout_margin="6dp"
                 android:contentDescription="@string/tab_text_1"/>
-        <Button
-                android:id="@+id/is_favourite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_favorite_24"/>
-
-        <Button
-                android:id="@+id/not_favourite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_favorite_border_24"/>
     </androidx.cardview.widget.CardView>
+
+    <ImageButton
+            android:id="@+id/is_favourite"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_baseline_favorite_24"
+            android:layout_alignBottom="@id/icons_frame"
+            android:layout_alignEnd="@id/icons_frame"
+            android:layout_margin="10pt"
+            android:contentDescription="Favourite"/>
 
     <TextView
             android:layout_width="wrap_content"
